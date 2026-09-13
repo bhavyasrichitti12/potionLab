@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PotionLab — an interactive pastel magical laboratory where you collect ingredients, brew potions, discover secrets, and build your Grimoire.">
+  <meta property="og:title" content="PotionLab — The Living Potion Lab">
+  <meta property="og:description" content="Explore, experiment and discover magical potions in a living pastel laboratory.">
+  <title>PotionLab — The Living Potion Lab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <header class="topbar">
+    <div class="brand" onclick="showScreen('home')" role="button" tabindex="0">
+      <span class="brand-mark">✦</span>
+      <span>PotionLab</span>
+    </div>
+    <nav aria-label="Main navigation">
+      <button onclick="showScreen('lab')">Laboratory</button>
+      <button onclick="showScreen('grimoire')">Grimoire</button>
+      <button onclick="showScreen('achievements')">Achievements</button>
+      <button onclick="showScreen('apprentice')">Apprentice</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="screen home-screen">
+      <div class="sun"></div>
+      <div class="home-content">
+        <p class="eyebrow">THE LIVING POTION LAB</p>
+        <h1>Potion<span>Lab</span></h1>
+        <p class="hero-copy">Every ingredient tells a story. Every experiment creates a mystery.</p>
+        <button class="primary big" onclick="showScreen('lab')">Enter the Laboratory ✦</button>
+        <p class="tiny">No downloads. Your discoveries save in this browser.</p>
+      </div>
+      <div class="home-lab-art" aria-hidden="true">
+        <div class="window"></div>
+        <div class="shelf shelf-a"><i>🪻</i><i>🧪</i><i>🌿</i><i>🫙</i></div>
+        <div class="table"></div>
+        <div class="cauldron mini-cauldron"><div class="liquid"></div><b>✦</b></div>
+        <div class="pip pip-home">●</div>
+      </div>
+    </section>
+
+    <section id="lab" class="screen lab-screen hidden">
+      <div class="lab-header">
+        <div>
+          <p class="eyebrow">LABORATORY</p>
+          <h2>Let's make something curious.</h2>
+        </div>
+        <div class="stats">
+          <span>Level <b id="level">1</b></span>
+          <span><b id="xp">0</b> XP</span>
+          <span><b id="discoveries">0</b> discoveries</span>
+        </div>
+      </div>
+
+      <div class="scene">
+        <div class="window big-window"><span>☀</span></div>
+        <div class="plant plant-one">🌿</div>
+        <div class="plant plant-two">🪴</div>
+
+        <div class="character elara">
+          <div class="character-head">◕‿◕</div>
+          <div class="character-body lavender">ELARA</div>
+          <div class="speech" id="elaraSpeech">Choose an ingredient to begin.</div>
+        </div>
+
+        <div class="character orin">
+          <div class="character-head">•ᴗ•</div>
+          <div class="character-body mint">ORIN</div>
+          <div class="speech" id="orinSpeech">I found the good bottles!</div>
+        </div>
+
+        <div class="cauldron-wrap">
+          <div id="cauldron" class="cauldron">
+            <div id="liquid" class="liquid"></div>
+            <div class="bubbles"><i></i><i></i><i></i></div>
+            <div class="steam">〰 〰</div>
+          </div>
+          <div class="cauldron-label">CERAMIC ALCHEMY BOWL</div>
+        </div>
+
+        <div class="pip" id="pip" title="Pip">●</div>
+        <div class="table-line"></div>
+      </div>
+
+      <div class="lab-controls">
+        <div class="ingredients-panel">
+          <div class="panel-title">
+            <span>Ingredient Shelf</span>
+            <button class="small-btn" onclick="chaosBrew()">Chaos Brew</button>
+          </div>
+          <div id="ingredients" class="ingredient-grid"></div>
+        </div>
+
+        <div class="brew-panel">
+          <div class="selected-title">Selected <span id="selectedCount">0</span>/4</div>
+          <div id="selectedIngredients" class="selected-list">
+            <span class="empty">Pick 2–4 ingredients</span>
+          </div>
+          <button id="brewButton" class="primary" onclick="brewPotion()" disabled>✦ Brew Potion</button>
+          <button class="secondary" onclick="clearSelection()">Clear</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="grimoire" class="screen hidden">
+      <div class="page-heading">
+        <p class="eyebrow">RESEARCH ARCHIVE</p>
+        <h2>✦ The Potion Grimoire</h2>
+        <p><b id="bookCount">0</b> / 10 discoveries recorded</p>
+      </div>
+      <div id="grimoirePages" class="grimoire"></div>
+    </section>
+
+    <section id="achievements" class="screen hidden">
+      <div class="page-heading">
+        <p class="eyebrow">MILESTONES</p>
+        <h2>Achievements</h2>
+        <p>Little signs that your curiosity is working.</p>
+      </div>
+      <div id="achievementGrid" class="achievement-grid"></div>
+    </section>
+
+    <section id="apprentice" class="screen hidden">
+      <div class="profile-card">
+        <div class="avatar">✦</div>
+        <p class="eyebrow">MY APPRENTICE</p>
+        <h2>Curious Apprentice</h2>
+        <div class="level-big">LEVEL <span id="profileLevel">1</span></div>
+        <div class="xp-track"><div id="xpBar"></div></div>
+        <p><b id="profileXp">0</b> XP • <b id="profilePotions">0</b> potions • <b id="profileIngredients">0</b> ingredients</p>
+        <button class="primary" onclick="showScreen('lab')">Return to Laboratory</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="close" onclick="closeModal()" aria-label="Close">×</button>
+      <p class="eyebrow">DISCOVERY</p>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <footer>
+    <span>Made for curious minds.</span>
+    <button onclick="resetProgress()">Reset progress</button>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

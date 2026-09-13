@@ -1,34 +1,39 @@
-# potionLab
-An interactive magical potion laboratory where you collect ingredients, brew unique potions, discover secrets, and explore a living pastel fantasy world. 🧪✨
 # 🧪 PotionLab — The Living Potion Lab
 
-Welcome to **PotionLab**, an interactive magical laboratory where imagination meets experimentation.
+PotionLab is an interactive pastel fantasy laboratory where you collect ingredients, experiment with combinations, brew potions, discover mysteries, earn XP, and record discoveries in a Grimoire.
 
 ## ✨ Features
 
-* 🧪 Brew magical potions
-* 🌿 Discover unique ingredients
-* 📖 Collect discoveries in your Potion Grimoire
-* 🏆 Unlock achievements
-* ⭐ Earn XP and level up
-* 🔮 Discover hidden secrets
-* 🧙 Meet original magical characters
-* 🌸 Explore a colorful pastel fantasy laboratory
+- Interactive ingredient shelf
+- Working potion recipes
+- Mystery combinations
+- XP and levels
+- Potion Grimoire
+- Achievements
+- Chaos Brew
+- Browser save using localStorage
+- Responsive design
+- Reduced-motion support
+- No backend required
 
-## 🎮 How to Play
+## 🎮 How to play
 
-1. Enter the laboratory.
-2. Collect ingredients.
-3. Experiment with different combinations.
-4. Brew a potion.
-5. Discover its magical properties.
-6. Record your discovery in the Grimoire.
-7. Earn XP and unlock new secrets.
+1. Enter the Laboratory.
+2. Choose 2–4 ingredients.
+3. Brew your potion.
+4. Discover the result.
+5. Check the Grimoire and achievements.
+6. Keep experimenting!
 
-## 🌈 About
+## 🚀 Free publishing
 
-PotionLab is designed as a small interactive fantasy world that lives inside your browser.
+This project is a static website and can be hosted with GitHub Pages, Netlify, Cloudflare Pages, or another static host.
 
-**Explore. Experiment. Discover.**
+## 📁 Files
 
-Made with ✨ imagination and 🧪 a little magic.
+- `index.html` — page structure
+- `style.css` — visual design and animations
+- `script.js` — potion recipes, interactions, XP, achievements, and saving
+- `assets/` — place for future artwork and icons
+
+Made for curious minds. ✦
